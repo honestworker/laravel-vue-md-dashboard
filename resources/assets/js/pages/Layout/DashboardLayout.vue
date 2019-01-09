@@ -2,36 +2,8 @@
   <div class="wrapper">
     <notifications></notifications>
 
-    <side-bar>
+    <side-bar :sidebarLinks="siderbarLinks">
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/dashboard">
-        <md-icon>dashboard</md-icon>
-        <p>Dashboard</p>
-      </sidebar-link>
-      <sidebar-link to="/user">
-        <md-icon>person</md-icon>
-        <p>User Profile</p>
-      </sidebar-link>
-      <sidebar-link to="/table">
-        <md-icon>content_paste</md-icon>
-        <p>Table list</p>
-      </sidebar-link>
-      <sidebar-link to="/typography">
-        <md-icon>library_books</md-icon>
-        <p>Typography</p>
-      </sidebar-link>
-      <sidebar-link to="/icons">
-        <md-icon>bubble_chart</md-icon>
-        <p>Icons</p>
-      </sidebar-link>
-      <sidebar-link to="/maps">
-        <md-icon>location_on</md-icon>
-        <p>Maps</p>
-      </sidebar-link>
-      <sidebar-link to="/notifications">
-        <md-icon>notifications</md-icon>
-        <p>Notification</p>
-      </sidebar-link>
     </side-bar>
 
     <div class="main-panel">
@@ -58,8 +30,64 @@ export default {
   components: {
     TopNavbar,
     DashboardContent,
-    ContentFooter,
-    MobileMenu
-  }
+    ContentFooter
+  },
+  data() {
+    return {
+      siderbarLinks: [
+        {
+          'name': 'Dashboard',
+          'icon': 'dashboard',
+          'path': 'dashboard'
+        },
+        {
+          'name': 'User Profile',
+          'icon': 'person',
+          'path': 'user'
+        },
+        {
+          'name': 'Table list',
+          'icon': 'content_paste',
+          'path': 'table'
+        },
+        {
+          'name': 'Typography',
+          'icon': 'library_books',
+          'path': 'typography'
+        },
+        {
+          'name': 'Icons',
+          'icon': 'bubble_chart',
+          'path': 'icons'
+        },
+        {
+          'name': 'Maps',
+          'icon': 'location_on',
+          'path': 'maps'
+        },
+        {
+          'name': 'Notifications',
+          'icon': 'notifications',
+          'path': 'notifications'
+        },
+        {
+          'name': 'Pages',
+          'icon': 'pages',
+          'children': [
+            {
+              'name': 'Login',
+              'icon': 'exit_to_app',
+              'path': 'login'
+            },
+            {
+              'name': 'Signup',
+              'icon': 'person_add',
+              'path': 'signup'
+            }
+          ]
+        }
+      ]
+    }
+  },
 }
 </script>

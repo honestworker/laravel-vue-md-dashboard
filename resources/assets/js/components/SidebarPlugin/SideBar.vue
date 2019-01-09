@@ -16,7 +16,7 @@
       <md-list class="nav">
         <!--By default vue-router adds an active class to each route link. This way the links are colored when clicked-->
         <slot>
-          <sidebar-link v-for="(link,index) in sidebarLinks"
+          <sidebar-link v-for="(link, index) in sidebarLinks"
                         :key="link.name + index"
                         :to="link.path"
                         :link="link">
@@ -79,10 +79,25 @@ export default{
   }
 }
 </script>
-<style>
+
+<style lang="scss">
   @media screen and (min-width: 991px) {
     .nav-mobile-menu{
       display: none;
+    }
+  }
+  .sidebar,
+  .off-canvas-sidebar{
+    .md-list-item .md-list-item-expand{
+      padding: 5px 10px 10px 15px;
+    }
+    .md-list .md-list-item-expand.md-list-item-container {
+      color: var(--md-theme-default-text-primary-on-background, rgb(255, 255, 255));
+    }
+    .md-list-item-expand{
+      &:hover{
+        color: #FFFFFF !important;
+      }
     }
   }
 </style>

@@ -1,9 +1,25 @@
 <template>
-  <md-list-item @click="hideSidebar"
-                v-bind="$attrs">
+  <md-list-item v-bind="$attrs" v-if="link.children" md-expand>
     <slot>
       <md-icon>{{link.icon}}</md-icon>
-      <p>{{link.name}}</p>
+      <p class="md-list-item-text">{{link.name}}</p>
+      <md-list slot="md-expand">
+        <md-list-item @click="hideSidebar" v-bind="$attrs" v-for="(subLink, index) in link.children" :key="subLink.name + index"
+                        :to="subLink.path"
+                        :link="subLink">
+        <slot>
+          <md-icon>{{subLink.icon}}</md-icon>
+          <p class="md-item-text">{{subLink.name}}</p>
+        </slot>
+        </md-list-item>
+      </md-list>
+    </slot>
+  </md-list-item>
+  <md-list-item @click="hideSidebar"
+                v-bind="$attrs" v-else>
+    <slot>
+      <md-icon>{{link.icon}}</md-icon>
+      <p class="md-item-text">{{link.name}}</p>
     </slot>
   </md-list-item>
 </template>
@@ -21,7 +37,8 @@ export default{
         return {
           name: '',
           path: '',
-          icon: ''
+          icon: '',
+          children: []
         }
       }
     },
@@ -39,5 +56,6 @@ export default{
   }
 }
 </script>
-<style>
+
+<style lang="scss">
 </style>
